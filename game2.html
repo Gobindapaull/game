@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color:#515c6e;
+            height: 650px;
+            width:1150px;
+            margin:auto;
+            display: flex;
+            justify-content: space-around;
+        }
+            div.a ,.b, .c ,.d ,.e ,.f, .g, .h {
+            width: 100px;
+            height:100px;
+            background-color:#1f3c5e;
+            position:fixed;
+            color:white;
+            text-align: center;    
+            }
+
+    </style>
+    <title>game</title>
+    </head>
+    <body>
+    
+                                <!-- 8 divs -->
+                <div class='a' id="div1" ><h1 id="box1">1</h1></div>
+                <div class='b' id="div2"><h1 id="box2">2</h1></div>
+                <div class='c' id="div3"><h1 id="box3">3</h1></div>
+                <div class='d' id="div4"><h1 id="box4">4</h1></div>
+                <div class='e' id="div5"><h1 id="box5">5</h1></div>
+                <div class='f' id="div6"><h1 id="box6">6</h1></div>
+                <div class='g' id="div7"><h1 id="box7">7</h1></div>
+                <div class='h' id="div8"><h1 id="box8">8</h1></div>
+
+                       <!-- js file -->
+                <script>
+            $(document).ready(function(){
+                animateDiv('.a');
+                animateDiv('.b');
+                animateDiv('.c');
+                animateDiv('.d');
+                animateDiv('.e');
+                animateDiv('.f');
+                animateDiv('.g');
+                animateDiv('.h');
+
+            });
+
+            function makeNewPosition(){
+                
+                // Get viewport dimensions (remove the dimension of the div)
+                var h = $(window).height() - 100;
+                var w = $(window).width() - 100;
+                
+                var nh = Math.floor(Math.random() * h);
+                var nw = Math.floor(Math.random() * w);
+                
+                return [nh,nw];    
+                
+            }
+
+            function animateDiv(myclass){
+                var newq = makeNewPosition();
+                $(myclass).animate({ top: newq[0], left: newq[1] }, 1000,   function(){
+                animateDiv(myclass);        
+                });
+                
+            };
+            </script>
+
+    <!-- js file  -->
+    <script src="game2.js"></script>
+</body>
+</html>
